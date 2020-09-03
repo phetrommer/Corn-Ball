@@ -4,7 +4,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public int currentLevel;
+    public int currentRound = 0;
 
     private void Awake()
     {

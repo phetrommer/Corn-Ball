@@ -18,6 +18,6 @@ public class pathfinding : MonoBehaviour
 
     private void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

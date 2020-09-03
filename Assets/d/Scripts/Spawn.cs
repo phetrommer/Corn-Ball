@@ -4,13 +4,15 @@ public class Spawn : MonoBehaviour
 {
     public Rigidbody enemy;
     public Transform[] spawnPoints;
+    public static Spawn Instance { get; private set; }
+
 
     void Start()
     {
         InvokeRepeating("spawnEnemy", 1, 1);
     }
 
-    void spawnEnemy()
+    public void spawnEnemy(Transform enemy)
     {
         foreach (Transform spawnPoint in spawnPoints)
         {

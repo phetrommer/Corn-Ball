@@ -6,11 +6,11 @@ using TMPro;
 
 public class levelDisplay : MonoBehaviour
 {
-    private int level = 1;
-    public TMP_Text levelText;
+    private int round = 1;
+    public TMP_Text roundText;
 
     void Update()
     {
-        levelText.text = "LEVEL: " + level;
+        //roundText.text = "ROUND: " + round;
     }
 }
