@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class spawnEnd : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
-            Destroy(other);
+            Destroy(other.gameObject);
         }
     }
 }

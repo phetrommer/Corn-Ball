@@ -1,24 +1,31 @@
 ﻿using System.Collections;
 using UnityEngine;
-
+using UnityEngine.SocialPlatforms;
 
 public class RoundManager : MonoBehaviour
 {
     public enum RoundState { SPAWNING, WAITING, COUNTING };
-    
+    public int nextRound = 0;
+
     [System.Serializable]
-    public class Round
+    public class enemyTypes
     {
-        public int round;
-        public Transform enemy;
+        public GameObject enemy;
         public int spawnCount;
         public float spawnInterval;
     }
+
+    [System.Serializable]
+    public class Round
+    {
+        public enemyTypes[] enemies;
+    }
+
     public float timeBetweenRounds = 5f;
     public Transform[] spawnPoints;
 
+    public int round;
     public Round[] rounds;
-    private int nextRound = 0;
 
     private float roundCountdown;
     private float searchCountdown = 1f;
@@ -73,14 +80,17 @@ public class RoundManager : MonoBehaviour
 
     IEnumerator StartRound(Round _round)
     {
-        GameManager.Instance.currentRound += 1;
-        Debug.Log("starting round: " + _round.round);
+        GameManager.Instance.currentRound = ++round;
+        Debug.Log("starting round: " + round);
         state = RoundState.SPAWNING;
 
-        for (int i = 0; i < _round.spawnCount; i++)
+        for (int i = 0; i < _round.enemies.Length; i++)
         {
-            spawnEnemy(_round.enemy);
-            yield return new WaitForSeconds(_round.spawnInterval);
+            for (int k = 0; k < _round.enemies[i].spawnCount; k++)
+            {
+                spawnEnemy(_round.enemies[i].enemy);
+                yield return new WaitForSeconds(_round.enemies[i].spawnInterval);
+            }
         }
 
         state = RoundState.WAITING;
@@ -104,7 +114,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public void spawnEnemy(Transform _enemy)
+    public void spawnEnemy(GameObject _enemy)
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -126,6 +136,7 @@ public class RoundManager : MonoBehaviour
             }
         }
     }
+
     public static Vector3 RandomPointInBounds(Bounds bounds)
     {
         return new Vector3(
