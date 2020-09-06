@@ -11,20 +11,27 @@ public class RoundManager : MonoBehaviour
     public class enemyTypes
     {
         public GameObject enemy;
+        [Tooltip("Amount of times this wave will spawn")]
         public int spawnCount;
+        [Tooltip("Amount of time between these wave spawns")]
         public float spawnInterval;
+        [Header("Spawns")]
+        public int topSpawn;
+        public int bottomSpawn;
+        public int leftSpawn;
+        public int rightSpawn;
     }
 
     [System.Serializable]
     public class Round
     {
-        public enemyTypes[] enemies;
+        public enemyTypes[] waves;
     }
 
     public float timeBetweenRounds = 5f;
     public Transform[] spawnPoints;
 
-    public int round;
+    private int round;
     public Round[] rounds;
 
     private float roundCountdown;
@@ -84,12 +91,12 @@ public class RoundManager : MonoBehaviour
         Debug.Log("starting round: " + round);
         state = RoundState.SPAWNING;
 
-        for (int i = 0; i < _round.enemies.Length; i++)
+        for (int i = 0; i < _round.waves.Length; i++)
         {
-            for (int k = 0; k < _round.enemies[i].spawnCount; k++)
+            for (int k = 0; k < _round.waves[i].spawnCount; k++)
             {
-                spawnEnemy(_round.enemies[i].enemy);
-                yield return new WaitForSeconds(_round.enemies[i].spawnInterval);
+                spawnEnemy(_round.waves[i]);
+                yield return new WaitForSeconds(_round.waves[i].spawnInterval);
             }
         }
 
@@ -105,7 +112,7 @@ public class RoundManager : MonoBehaviour
 
         if (nextRound + 1 > rounds.Length - 1)
         {
-            nextRound = 0;
+            //nextRound = 0;
             Debug.Log("all rounds completed");
         }
         else
@@ -114,25 +121,37 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public void spawnEnemy(GameObject _enemy)
+    public void spawnEnemy(enemyTypes _enemy)
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
             if (spawnPoint.name.Equals("spawnBottom"))
             {
-                Instantiate(_enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -180, 0));
+                for (int k = 0; k < _enemy.bottomSpawn; k++)
+                {
+                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -180, 0));
+                }
             }
             else if (spawnPoint.name.Equals("spawnTop"))
             {
-                Instantiate(_enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 0, 0));
+                for (int k = 0; k < _enemy.topSpawn; k++)
+                {
+                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 0, 0));
+                }
             }
             else if (spawnPoint.name.Equals("spawnLeft"))
             {
-                Instantiate(_enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -90, 0));
+                for (int k = 0; k < _enemy.leftSpawn; k++)
+                {
+                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -90, 0));
+                }
             }
             else if (spawnPoint.name.Equals("spawnRight"))
             {
-                Instantiate(_enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 90, 0));
+                for (int k = 0; k < _enemy.rightSpawn; k++)
+                {
+                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 90, 0));
+                }
             }
         }
     }
