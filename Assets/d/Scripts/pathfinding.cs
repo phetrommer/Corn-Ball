@@ -16,7 +16,28 @@ public class pathfinding : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * speed * Time.deltaTime);
+        //switch (GameManager.Instance.currentRound)
+        //{
+        //    case 2:
+        //        InvokeRepeating("Push", 1f, 2f);
+        //        break;
+        //    case 3:
+        //        InvokeRepeating("Pull", 5f, 0f);
+        //        break;
+        //    default:
+        //        break;
+        //}
     }
+
+    //void Push()
+    //{
+    //    this.GetComponent<Rigidbody>().AddForce(-transform.right * 5f);
+    //}
+
+    //void Pull()
+    //{
+    //    this.GetComponent<Rigidbody>().AddForce(transform.right * 5f);
+    //}
 
     private void OnBecameInvisible()
     {

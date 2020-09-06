@@ -11,4 +11,5 @@ public class spawnEnd : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
 }

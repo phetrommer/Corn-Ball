@@ -8,13 +8,14 @@ public class RoundManager : MonoBehaviour
     public int nextRound = 0;
 
     [System.Serializable]
-    public class enemyTypes
+    public class Wave
     {
         public GameObject enemy;
         [Tooltip("Amount of times this wave will spawn")]
         public int spawnCount;
         [Tooltip("Amount of time between these wave spawns")]
         public float spawnInterval;
+        public float timeAfterWave;
         [Header("Spawns")]
         public int topSpawn;
         public int bottomSpawn;
@@ -25,7 +26,7 @@ public class RoundManager : MonoBehaviour
     [System.Serializable]
     public class Round
     {
-        public enemyTypes[] waves;
+        public Wave[] waves;
     }
 
     public float timeBetweenRounds = 5f;
@@ -98,6 +99,7 @@ public class RoundManager : MonoBehaviour
                 spawnEnemy(_round.waves[i]);
                 yield return new WaitForSeconds(_round.waves[i].spawnInterval);
             }
+            yield return new WaitForSeconds(_round.waves[i].timeAfterWave);
         }
 
         state = RoundState.WAITING;
@@ -121,7 +123,7 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    public void spawnEnemy(enemyTypes _enemy)
+    public void spawnEnemy(Wave _enemy)
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -143,25 +145,25 @@ public class RoundManager : MonoBehaviour
             {
                 for (int k = 0; k < _enemy.leftSpawn; k++)
                 {
-                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -90, 0));
+                    Instantiate(_enemy.enemy, RandomPointInBoundsLR(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, -90, 0));
                 }
             }
             else if (spawnPoint.name.Equals("spawnRight"))
             {
                 for (int k = 0; k < _enemy.rightSpawn; k++)
                 {
-                    Instantiate(_enemy.enemy, RandomPointInBounds(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 90, 0));
+                    Instantiate(_enemy.enemy, RandomPointInBoundsLR(spawnPoint.GetComponent<Collider>().bounds), Quaternion.Euler(0, 90, 0));
                 }
             }
         }
     }
-
+    
     public static Vector3 RandomPointInBounds(Bounds bounds)
     {
-        return new Vector3(
-            Random.Range(bounds.min.x, bounds.max.x),
-            0.5f,
-            Random.Range(bounds.min.z, bounds.max.z)
-        );
+        return new Vector3(bounds.center.x, 0.5f, bounds.center.z + (int)Random.Range(-10, 10));
+    }
+    public static Vector3 RandomPointInBoundsLR(Bounds bounds)
+    {
+        return new Vector3(bounds.center.x + (int)Random.Range(-10, 10), 0.5f, bounds.center.z);
     }
 }
