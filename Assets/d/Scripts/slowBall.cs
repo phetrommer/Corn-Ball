@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class pathfinding : MonoBehaviour
+public class slowBall : MonoBehaviour
 {
     public float speed = 3f;
 

@@ -7,7 +7,7 @@ public class Spawn : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("spawnEnemy", 1, 1);
+        InvokeRepeating("spawnEnemy", 1f, 2f);
     }
 
     public void spawnEnemy()

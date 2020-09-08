@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4086309110798179989}
   - component: {fileID: 9139076757849803959}
   - component: {fileID: 9074572388488697692}
-  - component: {fileID: -5786029693972209354}
+  - component: {fileID: -4350500878072786283}
   - component: {fileID: 5137396570182537867}
   m_Layer: 9
-  m_Name: badguy2
+  m_Name: reverseBall
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0db7de8cab32d534f9eba96783c7347c, type: 2}
+  - {fileID: 2100000, guid: a57a34a429dec1f40a18d75f78f87393, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,7 +95,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5786029693972209354
+--- !u!114 &-4350500878072786283
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,10 +104,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5969122779411385913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6f40253de8d9594ab74cc921c34cad9, type: 3}
+  m_Script: {fileID: 11500000, guid: fe8bb0b3bc1c7a142aba6a5b05ba01fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 5
+  x: {fileID: 9139076757849803959}
 --- !u!54 &5137396570182537867
 Rigidbody:
   m_ObjectHideFlags: 0

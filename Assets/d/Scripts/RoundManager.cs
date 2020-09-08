@@ -15,7 +15,7 @@ public class RoundManager : MonoBehaviour
         public int spawnCount;
         [Tooltip("Amount of time between these wave spawns")]
         public float spawnInterval;
-        public float timeAfterWave;
+        public float timeAfterWave = 0.2f;
         [Header("Spawns")]
         public int topSpawn;
         public int bottomSpawn;
@@ -114,7 +114,7 @@ public class RoundManager : MonoBehaviour
 
         if (nextRound + 1 > rounds.Length - 1)
         {
-            //nextRound = 0;
+            nextRound = 0;
             Debug.Log("all rounds completed");
         }
         else
@@ -158,6 +158,7 @@ public class RoundManager : MonoBehaviour
         }
     }
     
+    //refactor me into 1 method, convert world vector to local? 
     public static Vector3 RandomPointInBounds(Bounds bounds)
     {
         return new Vector3(bounds.center.x, 0.5f, bounds.center.z + (int)Random.Range(-10, 10));

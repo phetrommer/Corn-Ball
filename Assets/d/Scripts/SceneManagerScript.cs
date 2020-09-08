@@ -5,6 +5,8 @@ using TMPro;
 
 public class SceneManagerScript : MonoBehaviour
 {
+    public static SceneManagerScript Instance { get; private set; }
+
     void Start()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
