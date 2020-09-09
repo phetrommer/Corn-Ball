@@ -54,6 +54,8 @@ public class boss1_script : MonoBehaviour
             {
                 Destroy(bombs[k]);
             }
+
+            FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
         }
 
     }

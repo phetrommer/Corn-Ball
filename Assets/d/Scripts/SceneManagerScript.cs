@@ -18,7 +18,7 @@ public class SceneManagerScript : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        if (SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             SceneManager.LoadScene("MainMenu");
         }
