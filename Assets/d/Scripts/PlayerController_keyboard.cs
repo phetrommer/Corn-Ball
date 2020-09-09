@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class PlayerController_keyboard : MonoBehaviour
 {
-    public float speed;
     private float heading = 0;
+    public float speed;
     public Transform cam;
+    public bool debugMode = false;
 
     Vector2 input;
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "Enemy" && debugMode == false)
         {
-            //Destroy(gameObject);
             gameObject.SetActive(false);
+            FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
         }
     }
 

@@ -19,35 +19,4 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    private void Update()
-    {
-        if (!PlayerIsAlive() && SceneManager.GetActiveScene().buildIndex != 1)
-        {
-            //SceneManagerScript.Instance.GoToMainMenu();
-            SceneManager.LoadScene("MainMenu");
-
-        }
-        else
-        {
-            return;
-        }
-    }
-
-    private float searchCountdown = 1f;
-
-    bool PlayerIsAlive()
-    {
-        
-        searchCountdown -= Time.deltaTime;
-        if (searchCountdown <= 0f)
-        {
-            searchCountdown = 1f;
-            if (GameObject.FindGameObjectWithTag("Player") == null)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
 }

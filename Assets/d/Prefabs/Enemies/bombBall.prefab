@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4086309110798179989}
   - component: {fileID: 9139076757849803959}
   - component: {fileID: 9074572388488697692}
-  - component: {fileID: -5786029693972209354}
   - component: {fileID: 5137396570182537867}
-  m_Layer: 9
-  m_Name: slowBall
-  m_TagString: Enemy
+  - component: {fileID: 4158502006923163202}
+  m_Layer: 13
+  m_Name: bombBall
+  m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bb2dd3ffa07fef4489e046ac54d962f1, type: 2}
+  - {fileID: 2100000, guid: 9a9c1af0b2dbe2d418f965cf7927f1f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,19 +95,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-5786029693972209354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5969122779411385913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6f40253de8d9594ab74cc921c34cad9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 8
 --- !u!54 &5137396570182537867
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,3 +111,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 1
+--- !u!114 &4158502006923163202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5969122779411385913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aca041ad66703f44a7c5ed4baf9ee7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
