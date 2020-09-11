@@ -7,14 +7,11 @@ using TMPro;
 public class HUD : MonoBehaviour
 {
     public TMP_Text roundText;
-
-    private void Start()
-    {
-        roundText = GetComponent<TMP_Text>();
-    }
+    public TMP_Text pointsText;
 
     void Update()
     {
         roundText.text = "ROUND: " + GameManager.Instance.currentRound.ToString();
+        pointsText.text = "POINTS: " + GameManager.Instance.currentPoints.ToString();
     }
 }

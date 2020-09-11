@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public int currentRound = 0;
+    public float currentPoints = 0f;
 
     private void Awake()
     {

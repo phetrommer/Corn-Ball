@@ -52,6 +52,7 @@ public class RoundManager : MonoBehaviour
         {
             if (!EnemyIsAlive())
             {
+                GameManager.Instance.currentPoints += 200f;
                 RoundCompleted();
             }
             else

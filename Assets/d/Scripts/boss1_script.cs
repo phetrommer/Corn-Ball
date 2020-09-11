@@ -10,6 +10,7 @@ public class boss1_script : MonoBehaviour
     private float min = -9f;
     private float max = 9f;
     private Transform topSpawn, bottomSpawn;
+    private int range;
 
     public float speed = 3f;
     public int bossLife = 5;
@@ -23,6 +24,7 @@ public class boss1_script : MonoBehaviour
         topSpawn = GameObject.FindGameObjectWithTag("spawnTop").transform;
         bottomSpawn = GameObject.FindGameObjectWithTag("spawnBottom").transform;
         Physics.IgnoreLayerCollision(12, 9);
+        GetComponent<Renderer>().material.color = Color.green;
     }
 
     void Start()
@@ -35,6 +37,19 @@ public class boss1_script : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(Mathf.PingPong(Time.time * speed, max - min) + min, transform.position.y, transform.position.z);
+        range = Random.Range(8, 18);
+        switch (bossLife)
+        {
+            case 3:
+                GetComponent<Renderer>().material.color = Color.yellow;
+                break;
+            case 1:
+                GetComponent<Renderer>().material.color = Color.red;
+                break;
+            default:
+                break;
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -55,18 +70,17 @@ public class boss1_script : MonoBehaviour
                 Destroy(bombs[k]);
             }
 
-            FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
+            FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 5f);
         }
 
     }
 
     IEnumerator spawnEnemy()
     {
-        int tempcount = 0;
-        //int max = Random.Range(9, 14);
+        int tempcount = -1;
         while(true)
         {
-            if (tempcount >= Random.Range(9, 14))
+            if (tempcount >= range)
             {
                 Instantiate(bomb, new Vector3(transform.position.x, transform.position.y, transform.position.z + 1), Quaternion.Euler(0, 90, 0));
                 tempcount = 0;

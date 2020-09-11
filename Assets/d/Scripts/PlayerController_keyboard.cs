@@ -18,6 +18,7 @@ public class PlayerController_keyboard : MonoBehaviour
             gameObject.SetActive(false);
             FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
             FindObjectOfType<GameManager>().currentRound = 0;
+            FindObjectOfType<GameManager>().currentPoints = 0f;
         }
     }
 

@@ -30,6 +30,7 @@ public class bombBall : MonoBehaviour
         if (Vector3.Distance(transform.position, target.position) < 1f)
         {
             Destroy(gameObject);
+            GameManager.Instance.currentPoints += 50f;
         }
     }
 
