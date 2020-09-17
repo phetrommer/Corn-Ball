@@ -2009,7 +2009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OPTIONS
+  m_text: CHALLENGE
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
   m_sharedMaterial: {fileID: 2164040, guid: 5302535af1044152a457ed104f1f4b91, type: 2}
@@ -4578,7 +4578,7 @@ GameObject:
   - component: {fileID: 871289648}
   - component: {fileID: 871289647}
   m_Layer: 5
-  m_Name: OptionsBtn
+  m_Name: ChallengeModeBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4601,8 +4601,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -67.479996}
-  m_SizeDelta: {x: 248.8883, y: 54.03611}
+  m_AnchoredPosition: {x: 0.0000038146973, y: -67.479996}
+  m_SizeDelta: {x: 293.8142, y: 54.03611}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871289647
 MonoBehaviour:

@@ -13,12 +13,15 @@ public class PlayerController_keyboard : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Enemy" && debugMode == false)
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "projectile")
         {
-            gameObject.SetActive(false);
-            FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
-            FindObjectOfType<GameManager>().currentRound = 0;
-            FindObjectOfType<GameManager>().currentPoints = 0f;
+            if (debugMode == false)
+            {
+                gameObject.SetActive(false);
+                FindObjectOfType<SceneManagerScript>().Invoke("GoToMainMenu", 2f);
+                FindObjectOfType<GameManager>().currentRound = 0;
+                FindObjectOfType<GameManager>().currentPoints = 0f;
+            }
         }
     }
 

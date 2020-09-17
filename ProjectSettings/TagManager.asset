@@ -11,6 +11,7 @@ TagManager:
   - spawnTop
   - spawnBottom
   - Bomb
+  - projectile
   layers:
   - Default
   - TransparentFX

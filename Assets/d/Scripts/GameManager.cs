@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     public int currentRound = 0;
     public float currentPoints = 0f;
 
+    public bool challengemode1 = false;
+    public bool challangemode2 = false;
+
     private void Awake()
     {
         if (Instance == null)

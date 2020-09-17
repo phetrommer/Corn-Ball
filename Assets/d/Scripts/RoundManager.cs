@@ -8,6 +8,8 @@ public class RoundManager : MonoBehaviour
     public enum RoundState { SPAWNING, WAITING, COUNTING };
     public int nextRound = 0;
 
+    public GameObject[] challengemode;
+
     [System.Serializable]
     public class Wave
     {
@@ -39,7 +41,20 @@ public class RoundManager : MonoBehaviour
     private float roundCountdown;
     private float searchCountdown = 1f;
 
-    private RoundState state = RoundState.COUNTING;
+    [HideInInspector]
+    public RoundState state = RoundState.COUNTING;
+
+    private void Awake()
+    {
+        if (FindObjectOfType<GameManager>().challengemode1 == true)
+        {
+            Instantiate(challengemode[0]);
+        }
+        if (FindObjectOfType<GameManager>().challangemode2 == true)
+        {
+            Instantiate(challengemode[1]);
+        }
+    }
 
     private void Start()
     {
